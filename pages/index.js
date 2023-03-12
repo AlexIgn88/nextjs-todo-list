@@ -1,10 +1,10 @@
-import React from 'react';
+import {useState} from 'react';
 
   let listOfTasks = ["Прогулка", "Чтение книги", "Отдых"];
 
   export default function ToDoInput() {
-    const [ToDos, setToDos] = React.useState(listOfTasks.map((str, i) =>({ str, id: i, checked: false }))),
-      [text, setText] = React.useState("");
+    const [ToDos, setToDos] = useState(listOfTasks.map((str, i) =>({ str, id: i, checked: false }))),
+      [text, setText] = useState("");
     
       function addTodo() {
       setToDos([...ToDos, { str: text, id: Date.now(), checked: false }]);
@@ -31,7 +31,7 @@ import React from 'react';
       setToDos((old) => old.filter((item) => !item.checked));
     }
   
-    function Up(id) {
+    function up(id) {
       setToDos((old) => {
         const index = old.findIndex((item) => id === item.id);
         if (index === 0) {
@@ -45,7 +45,7 @@ import React from 'react';
       });
     }
   
-    function Down(id) {
+    function down(id) {
       setToDos((old) => {
         const index = old.findIndex((item) => id === item.id);
         if (index === old.length - 1) {
@@ -89,11 +89,11 @@ import React from 'react';
                 <span data-id={el.id} className="cross">
                   &#10007;
                 </span>
-                <span className="arrow" onClick={() => Up(el.id)}>
+                <span className="arrow" onClick={() => up(el.id)}>
                   {" "}
                   &#8657;{" "}
                 </span>
-                <span className="arrow" onClick={() => Down(el.id)}>
+                <span className="arrow" onClick={() => down(el.id)}>
                   {" "}
                   &#8659;{" "}
                 </span>
