@@ -8,7 +8,6 @@ export default function ToDo() {
   const [text, setText] = useState(""),
     [toDos, setToDos] = useState(listOfTasks.map((str, i) => ({ str, id: i, checked: false })));
 
-  console.log('Рендер-Todo');
   return (
     <>
       <Form text={text} newText={text => setText(text)} toDos={toDos} newToDos={list => setToDos(list)} />
