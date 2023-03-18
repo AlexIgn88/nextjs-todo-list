@@ -10,11 +10,6 @@ export default function Form({ text, newText, toDos, newToDos }) {
         newText("");
     }
 
-    function deleteButton() {
-        newToDos(old => old.filter((item) => !item.checked));
-    }
-
-
     return (
         <div>
             <h4>Список дел</h4>
@@ -24,7 +19,18 @@ export default function Form({ text, newText, toDos, newToDos }) {
                 onInput={(evt) => changeText(evt.target.value)}
             />
             <button onClick={add}>Добавить</button>
-            <button onClick={del}>Удалить</button>
+            <DeleteMarked newToDos={newToDos}/>
         </div>
+    );
+}
+
+function DeleteMarked({newToDos}) {
+
+    function deleteButton() {
+        newToDos(old => old.filter((item) => !item.checked));
+    }
+
+    return (
+        <button onClick={deleteButton}>Удалить отмеченные</button>
     );
 }

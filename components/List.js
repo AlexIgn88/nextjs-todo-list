@@ -55,7 +55,7 @@ export default function List({ toDos, newToDos }) {
             {toDos.map(el => (
                 <li data-id={el.id} key={el.id}>
                     <label className="label">
-                        <input type="checkbox" checked={el.checked} onClick={
+                        <input type="checkbox" checked={el.checked} onChange={
                             (evt) => toggleCheckByIdCallback(+evt.target.closest("Li").dataset.id)
                         } />
                         {el.str}
