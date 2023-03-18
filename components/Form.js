@@ -6,15 +6,11 @@ export default function Form({ text, newText, toDos, newToDos }) {
         del = useCallback(() => deleteButton(), [toDos]);
 
     function addTodo() {
-        console.log('Рендер');
-
         newToDos([...toDos, { str: text, id: Date.now(), checked: false }]);
         newText("");
     }
 
     function deleteButton() {
-        console.log('Рендер');
-
         newToDos(old => old.filter((item) => !item.checked));
     }
 
