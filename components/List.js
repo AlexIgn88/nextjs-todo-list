@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-export default function List({ toDos, newToDos }) {
+function List({ toDos, newToDos }) {
     const delItembyIDCallback = useCallback(id => delItembyID(id), [toDos]),
         toggleCheckByIdCallback = useCallback(id => toggleCheckById(id), [toDos]),
         upCallback = useCallback(id => up(id), [toDos]),
@@ -77,3 +77,5 @@ export default function List({ toDos, newToDos }) {
         </ol>
     );
 }
+
+export default List;

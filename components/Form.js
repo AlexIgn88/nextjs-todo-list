@@ -1,36 +1,25 @@
 import { useCallback } from 'react';
+import DeleteMarked from '../components/DeleteMarked';
 
-export default function Form({ text, newText, toDos, newToDos }) {
-    const changeText = useCallback(value => newText(value), [toDos]),
-        add = useCallback(() => addTodo(), [text]),
-        del = useCallback(() => deleteButton(), [toDos]);
+function Form({ text, setText, toDos, setToDos }) {
+    const changeText = useCallback(value => setText(value), [toDos]),
+        add = useCallback(() => addTask(), [text]);
 
-    function addTodo() {
-        newToDos([...toDos, { str: text, id: Date.now(), checked: false }]);
-        newText("");
+    function addTask() {
+        setToDos([...toDos, { str: text, id: Date.now(), checked: false }]);
+        setText("");
     }
 
-    return (
-        <div>
-            <h4>Список дел</h4>
-            <input
-                type="text"
-                value={text}
-                onInput={(evt) => changeText(evt.target.value)}
-            />
-            <button onClick={add}>Добавить</button>
-            <DeleteMarked newToDos={newToDos}/>
-        </div>
-    );
+    return <div>
+        <h4>Список дел</h4>
+        <input
+            type="text"
+            value={text}
+            onInput={(evt) => changeText(evt.target.value)}
+        />
+        <button onClick={add}>Добавить</button>
+        <DeleteMarked setToDos={setToDos} />
+    </div>
 }
 
-function DeleteMarked({newToDos}) {
-
-    function deleteButton() {
-        newToDos(old => old.filter((item) => !item.checked));
-    }
-
-    return (
-        <button onClick={deleteButton}>Удалить отмеченные</button>
-    );
-}
+export default Form;
