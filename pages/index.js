@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Form from '../components/Form.js';
 import List from '../components/List.js';
 
-let listOfTasks = ['Прогулка', 'Чтение книги', 'Отдых'];
+let listOfTasks = ['Учеба', 'Прогулка', 'Чтение книги', 'Отдых', 'Здоровый сон'];
 
 function ToDo() {
   const [text, setText] = useState(''),
@@ -18,7 +18,7 @@ function ToDo() {
       />
       <List
         toDos={toDos}
-        newToDos={list => setToDos(list)}
+        setToDos={setToDos}
       />
     </>
   );
