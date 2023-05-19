@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Form from '../components/Form.js';
 import List from '../components/List.js';
+import Head from 'next/head';
 
 let listOfTasks = ['Учеба', 'Прогулка', 'Чтение книги', 'Отдых', 'Здоровый сон'];
 
@@ -10,6 +11,9 @@ function ToDo() {
 
   return (
     <>
+      <Head>
+        <title>To-Do list</title>
+      </Head>
       <Form
         text={text}
         setText={setText}
