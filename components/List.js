@@ -1,15 +1,13 @@
 import { useCallback, useState } from 'react';
 
 function List({ toDos, setToDos }) {
-    const delItembyIDCallback = useCallback(id => delItembyID(id), [toDos]),
-
+    const
+        delItembyIDCallback = useCallback(id => delItembyID(id), [toDos]),
         toggleCheckByIdCallback = useCallback(id => toggleCheckById(id), [toDos]),
-
         upCallback = useCallback(id => up(id), [toDos]),
-
         downCallback = useCallback(id => down(id), [toDos]),
-
         [draggedItem, setDraggedItem] = useState(null),
+
 
         handleDragStart = (evt, index) => {
             setDraggedItem(toDos[index]);
@@ -32,6 +30,7 @@ function List({ toDos, setToDos }) {
         handleDragEnd = () => {
             setDraggedItem(null);
         };
+
 
     function delItembyID(id) {
         setToDos(old => {
@@ -77,12 +76,11 @@ function List({ toDos, setToDos }) {
         });
     }
 
-    return <ol>
+    return <ol className='lists'>
         {toDos.map((el, index) => (
             <li
                 data-id={el.id}
                 key={el.id}
-
                 draggable
                 onDragStart={(evt) => handleDragStart(evt, index)}
                 onDragOver={() => handleDragOver(index)}

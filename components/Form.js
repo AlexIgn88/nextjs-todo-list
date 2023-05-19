@@ -10,7 +10,7 @@ function Form({ text, setText, toDos, setToDos }) {
         setText("");
     }
 
-    return <div>
+    return <div className='form'>
         <h4>Список дел</h4>
         <input
             type="text"
